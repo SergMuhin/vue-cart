@@ -14,6 +14,7 @@ export default {
 		"offers-list": OffersList
 	},
 	computed: {
+		// Все текущие товары
 		offers() {
 			return this.$store.state.offers.active;
 		}

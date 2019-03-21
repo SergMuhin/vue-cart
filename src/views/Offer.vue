@@ -30,6 +30,7 @@ export default {
 		"offers-list-item": OffersListItem
 	},
 	computed: {
+		// Получение товара по id
 		offer() {
 			return this.$store.state.offers.active.find(
 				item => +item.id === +this.$route.params.offerId

@@ -125,9 +125,11 @@ export default {
 		};
 	},
 	computed: {
+		// Товары из корзины
 		offers() {
 			return this.$store.state.storage.cart;
 		},
+		// Общая сумма заказа
 		total() {
 			let sum = 0;
 			this.offers.forEach(offer => {
@@ -137,6 +139,7 @@ export default {
 		}
 	},
 	methods: {
+		// Выслать заказ
 		sendOrder() {
 			this.$store.commit("storage/CLEAR", { storage: "cart" });
 			this.send = true;

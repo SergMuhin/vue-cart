@@ -21,21 +21,6 @@
 				>{{ type.name }}</v-chip>
 
 				<v-spacer></v-spacer>
-
-				<!-- TODO настроить сортировку по алфавиту, цене и скидкам -->
-				<!-- <v-menu offset-y>
-					<template v-slot:activator="{ on }">
-						<v-btn color="primary" dark v-on="on">Сортировать</v-btn>
-					</template>
-					<v-list>
-						<v-list-tile v-for="item in sort" @click="sortOffers(item.func)" :key="item.func">
-							<v-list-tile-title>
-								<v-icon>{{ item.icon }}</v-icon>
-								{{ item.name }}
-							</v-list-tile-title>
-						</v-list-tile>
-					</v-list>
-				</v-menu>-->
 			</div>
 
 			<v-layout v-if="activeOffers.length" wrap>
@@ -75,79 +60,33 @@ export default {
 				{ id: 1, name: "Robots" },
 				{ id: 2, name: "Aliens" },
 				{ id: 4, name: "Cats" }
-			],
-			sort: [
-				{
-					id: 1,
-					name: "По алфавиту",
-					icon: "keyboard_arrow_up",
-					func: "alphabet-asc"
-				},
-				{
-					id: 2,
-					name: "По алфавиту",
-					icon: "keyboard_arrow_down",
-					func: "alphabet-desc"
-				},
-				{
-					id: 3,
-					name: "По цене",
-					icon: "keyboard_arrow_up",
-					func: "price-asc"
-				},
-				{
-					id: 4,
-					name: "По цене",
-					icon: "keyboard_arrow_down",
-					func: "price-desc"
-				}
-			],
-			sortCond: {
-				direction: 1,
-				type: 1
-			}
+			]
 		};
 	},
 	computed: {
+		// Товары в данный момент на странице
 		activeOffers() {
 			return this.filteredOffers.slice(
 				(this.page - 1) * this.limit,
 				this.page * this.limit
 			);
 		},
+		// Товары по активному фильтру
 		filteredOffers() {
 			return this.activeTypeId
 				? this.offers.filter(item => item.typeId === this.activeTypeId)
 				: this.offers;
 		},
+		// Количество отфильтрованных товаров
 		count() {
 			return this.filteredOffers.length;
 		},
+		// Текущий активный id фильтра
 		activeTypeId() {
 			return this.$store.state.storage.activeTypeId;
 		}
 	},
 	methods: {
-		// sortOffers(func) {
-		// console.log(func);
-		// console.log(this.sortCond);
-		// debugger;
-		// switch (func) {
-		// 	case "alphabet-asc":
-		// 		break;
-		// 	case "alphabet-desc":
-		// 		break;
-		// 	case "price-asc":
-		// 		this.filteredOffers.sort((a, b) => a.price - b.price);
-		// 		break;
-		// 	case "price-desc":
-		// 		this.filteredOffers.sort((a, b) => b.price - a.price);
-		// 		break;
-
-		// 	default:
-		// 		return;
-		// }
-		// },
 		filterClickHandler(id) {
 			this.page = 1;
 			this.$store.commit("storage/SET_ACTIVE_TYPE_ID", id);

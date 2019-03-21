@@ -26,6 +26,7 @@ export default {
 		"empty-state": EmptyState
 	},
 	computed: {
+		// Товары избранного
 		offers() {
 			return this.$store.state.storage.favorites;
 		}

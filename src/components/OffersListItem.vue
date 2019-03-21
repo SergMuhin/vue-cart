@@ -51,18 +51,17 @@ export default {
 		}
 	},
 	computed: {
-		offerImgSrc() {
-			return `./../assets/logo.jpg`;
-		},
+		// Класс для цвета в зависимости от размера скидки
 		colorDiscountClass() {
 			let str = "";
 			if (this.offer.discount >= 15 && this.offer.discount < 20)
 				str = "pink";
-			if (this.offer.discount >= 20 && this.offer.discount < 250)
+			if (this.offer.discount >= 20 && this.offer.discount < 25)
 				str = "purple";
 			if (this.offer.discount >= 25) str = "green";
 			return str;
 		},
+		// Начальная цена
 		startPrice() {
 			return Math.trunc(
 				this.offer.price / ((100 - this.offer.discount) / 100)

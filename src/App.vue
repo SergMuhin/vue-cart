@@ -25,10 +25,6 @@ export default {
 
 <style lang="scss">
 @import "~vuetify/dist/vuetify.min.css";
-body {
-	font-family: "Montserrat", "Arial", sans-serif;
-}
-
 * {
 	margin: 0;
 	padding: 0;
