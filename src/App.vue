@@ -14,6 +14,7 @@
 <script>
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 export default {
 	components: {
 		Header,
@@ -25,6 +26,7 @@ export default {
 
 <style lang="scss">
 @import "~vuetify/dist/vuetify.min.css";
+
 * {
 	margin: 0;
 	padding: 0;
