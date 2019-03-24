@@ -152,7 +152,7 @@ export default {
 </script>
 
 
-<style lang="scss"scoped>
+<style lang="scss" scoped>
 .cart-table-item {
 	border-bottom: 1px solid #ddd;
 	position: relative;
